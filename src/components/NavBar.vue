@@ -1,9 +1,7 @@
 <script setup>
   import { useStore } from '../store/index';
   import { supabase } from '../supabase'
-  import { onMounted, ref } from 'vue'
-  import { useGetAllProjects } from '../composables/getallprojects'
-  
+  import { onMounted, ref } from 'vue' 
   import { useRoute } from 'vue-router'
 
 //CSS javascript below

@@ -3,7 +3,6 @@
   import { useRoute, useRouter } from 'vue-router'
   import { useStore } from './store/index'
   import NavBar from './components/NavBar.vue'
-  import ProjectUpdater from './components/ProjectUpdater.vue'
 
   const store = useStore()
   const route = useRoute()
