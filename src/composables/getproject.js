@@ -1,6 +1,5 @@
 // mouse.js
 import { ref } from 'vue' 
-import { useRoute } from 'vue-router'
 import { useStore } from '../store/index';
 import { supabase } from '../supabase'
 
@@ -8,7 +7,6 @@ import { supabase } from '../supabase'
 export async function useGetProject() {
   
     const store = useStore()
-    const route = useRoute()
     const loading = ref(true)
   
     const project_id = ref('')

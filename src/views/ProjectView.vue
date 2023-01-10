@@ -4,6 +4,7 @@
   import { useStore } from '../store/index';
   import { supabase } from '../supabase'
   import { useGetProject } from '../composables/getproject'
+  import { useGetTransactions } from '../composables/gettransactions'
 
   const store = useStore()
   const route = useRoute()
@@ -14,6 +15,11 @@
   const websiteRender = ref('')
   const project_typeRender = ref('')
   const budget_itemsRender = ref('')
+
+  const transactionId = ref([])
+  const transactionDate = ref([])
+  const exchangeRate = ref([])
+  const txJsonUrl = ref([])
 
   const group = route.params.group
   const project = route.params.project
@@ -31,7 +37,12 @@
     websiteRender.value = website.value
     project_typeRender.value = project_type.value
     budget_itemsRender.value = budget_items.value
-    console.log(wallet.value)
+    const { transaction_id, transaction_date, exchange_rate, tx_json_url } = await useGetTransactions(project_idRender.value)
+    transactionId.value = transaction_id.value
+    transactionDate.value = transaction_date.value
+    exchangeRate.value = exchange_rate.value
+    txJsonUrl.value = tx_json_url.value
+    console.log(exchangeRate.value)
   }
   
 </script>
