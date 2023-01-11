@@ -26,7 +26,6 @@ export async function useGetTransactions(project_id) {
 
       if (data) {
         for (let j in data) {
-          console.log("loading", j)
           transaction_id.value.push(data[j].transaction_id)
           transaction_date.value.push(data[j].transaction_date)
           exchange_rate.value.push(data[j].exchange_rate)

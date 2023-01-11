@@ -5,6 +5,8 @@
   import { supabase } from '../supabase'
   import { useGetProject } from '../composables/getproject'
   import { useGetTransactions } from '../composables/gettransactions'
+  import { useGetContributions } from '../composables/getcontributions'
+  import { useGetDistributions } from '../composables/getdistributions'
 
   const store = useStore()
   const route = useRoute()
@@ -20,6 +22,18 @@
   const transactionDate = ref([])
   const exchangeRate = ref([])
   const txJsonUrl = ref([])
+
+  const contributionId = ref([])
+  const taskCreator = ref([])
+  const taskName = ref([])
+  const taskLabel = ref([])
+  const taskDescription = ref([])
+
+  const distId = ref([])
+  const contributorId = ref([])
+  const adaR = ref([])
+  const gmblR = ref([])
+  const agixR = ref([])
 
   const group = route.params.group
   const project = route.params.project
@@ -42,7 +56,10 @@
     transactionDate.value = transaction_date.value
     exchangeRate.value = exchange_rate.value
     txJsonUrl.value = tx_json_url.value
-    console.log(exchangeRate.value)
+    const { contribution_id, task_creator, task_name, task_label, task_description } = await useGetContributions(transactionId.value[0])
+    contributionId.value = contribution_id.value
+    const { dist_id, contributor_id, ada, gmbl, agix } = await useGetDistributions(contributionId.value[0])
+    console.log(ada.value[0])
   }
   
 </script>
